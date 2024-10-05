@@ -1,0 +1,211 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+@media screen and (min-width: 800px) {
+  #wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-image: url("/images/site/checkerboard.jpg");
+    background-repeat: repeat;
+    background-size: auto 100%;
+  }
+
+  main {
+    max-width: 80vw;
+    max-height: 90vw;
+    background-color: white;
+    margin: 1em auto;
+    border: 10px solid #00bcd4;
+    border-radius: 25px;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    font-family: "Merriweather", serif;
+  }
+
+  h1 {
+    width: 100%;
+    font-size: 4vmin;
+  }
+
+  header {
+    position: relative;
+    width: 100%;
+    height: 5em;
+    background-color: white;
+    border-radius: 25px;
+  }
+
+  .siteName {
+    font-size: 8vmin;
+  }
+
+  header a {
+    padding: 0.5em;
+  }
+
+  #tools {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5em;
+    font-size: 4vmin;
+  }
+
+  nav {
+    max-width: 100%;
+    height: 5em;
+    background-color: black;
+    color: white;
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    list-style-type: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li {
+    font-size: 4vmin;
+    display: flex;
+    align-items: center;
+  }
+
+  nav ul li:first-child {
+    padding-left: 1em;
+  }
+
+  nav ul li:last-child {
+    padding-right: 1em;
+  }
+
+  nav ul li a {
+    color: white;
+    text-decoration: none;
+  }
+
+  nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .title {
+    margin: 1em;
+  }
+
+  #hero {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 4em;
+  }
+
+  #hero img {
+    width: 60%;
+    height: auto;
+  }
+
+  #hero-details {
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.706);
+    position: absolute;
+    top: 0;
+    margin-left: 5em;
+    padding: 0.5em 1em;
+    color: #00bcd4;
+    font-size: 3vmin;
+    text-align: left;
+  }
+
+  #hero-details button {
+    background-color: #00bcd4;
+    color: black;
+    height: 2em;
+    width: 7em;
+    border: none;
+    font-size: 3.5vmin;
+    font-weight: bold;
+    margin-top: 1em;
+  }
+
+  .details-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .details-container h1 {
+    margin-bottom: 2em;
+  }
+
+  .reviews-container {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+
+  }
+
+  .reviews {
+    font-size: 4vmin;
+  }
+
+  .reviews li {
+    margin-top: 1em;
+  }
+
+  .upgrades-container {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1em;
+  }
+
+  .upgrades-container h1 {
+    margin-left: 1em;
+  }
+
+  .upgrade {
+    width: 8em;
+    height: 8em;
+    text-align: center;
+    font-size: 3.5vmin;
+  }
+
+  .upgrade a {
+    text-decoration: underline;
+    color: blue;
+  }
+
+  .img-container {
+    background-color: #00bcd4;
+    text-align: center;
+  }
+
+  .img-container img {
+    height: 5em;
+  }
+
+  footer {
+    width: 100%;
+    text-align: center;
+    font-size: 3vmin;
+  }
+}
