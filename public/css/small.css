@@ -183,9 +183,72 @@
     border: 2px solid black;
   }
 
+  .inventory-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+  }
+
+  .inventory-details p {
+    padding: .5em;
+    font-size: 1.2em;
+    width: 70%;
+    text-align: center;
+    margin: 0;
+  }
+
+  .vehicle-title {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .vehicle-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    align-self: center;
+  }
+
+  .vehicle-description {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+
+  .vehicle-price {
+    font-size: 18px;
+    color: #e67e22;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .vehicle-mileage,
+  .vehicle-color,
+  .vehicle-classification {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 5px;
+  }
+
+  .notice {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+  }
+
   footer {
-    bottom: 0;
-    width: 100vw;
-    font-size: 4vmin;
+    position: relative;
+    padding-top: 1em;
+    text-align: center;
+    font-size: 0.5em;
+    background-color: transparent;
+    margin-top: 1em;
   }
 }
