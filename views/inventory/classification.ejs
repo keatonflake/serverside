@@ -1,0 +1,13 @@
+<!-- inventory display -->
+
+<div>
+    <% if (title) { %>
+        <h1 id="class-type">
+            <%= title %>
+        </h1>
+        <% } else { res.redirect('/') } %>
+
+            <%# messages() %>
+
+                <%- grid %>
+</div>

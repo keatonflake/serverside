@@ -30,6 +30,29 @@
     font-size: 6vmin;
   }
 
+  .error-container {
+    height: 100vh;
+  }
+
+  #error-display {
+    font-size: 10rem;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    background: linear-gradient(90deg, #1e3a8a, #10b981);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin: 0 auto;
+  }
+
+  .error-p {
+    text-align: center;
+    font-size: 32px;
+    padding: 5px;
+  }
+
+
   header {
     position: relative;
     width: 100vw;
@@ -154,6 +177,10 @@
 
   .img-container img {
     height: 20vw;
+  }
+
+  .vehicles {
+    border: 2px solid black;
   }
 
   footer {
