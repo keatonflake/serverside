@@ -91,9 +91,9 @@ Util.buildDetailsTemp = async function (data) {
       <h2 class="vehicle-title">${data.inv_make} ${data.inv_model} (${
       data.inv_year
     })</h2>
-      <img src="${data.inv_image}" alt="${data.inv_make} ${
-      data.model
-    }" class="vehicle-image">
+      <img src="${data.inv_image}" alt="${data.inv_color} +" " ${
+      data.inv_make
+    } ${data.model}" class="vehicle-image">
       <p class="vehicle-description">${data.inv_description}</p>
       <p class="vehicle-price">Price: $${(
         data.inv_price || 0
