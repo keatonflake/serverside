@@ -32,9 +32,9 @@ Util.getNav = async function () {
 Util.buildClassificationGrid = async function (data) {
   let grid;
   if (data.length > 0) {
-    grid = '<ul id="inv-display">';
+    grid = '<ul class="list-fix">';
     data.forEach((vehicle) => {
-      grid += "<li>";
+      grid += '<li class="list-fix">';
       grid +=
         '<a href="../../inv/type/detail/' +
         vehicle.inv_id +
@@ -42,10 +42,13 @@ Util.buildClassificationGrid = async function (data) {
         vehicle.inv_make +
         " " +
         vehicle.inv_model +
-        'details"><img src="' +
+        ' details"><img src="' +
         vehicle.inv_thumbnail +
-        '" alt="';
-      vehicle.inv_make + " " + vehicle.inv_model + ' on CSE Motors" /></a>';
+        '" alt="' +
+        vehicle.inv_make +
+        " " +
+        vehicle.inv_model +
+        ' on CSE Motors" /></a>';
       grid += '<div class="namePrice">';
       grid += "<hr />";
       grid += "<h2>";
@@ -71,7 +74,7 @@ Util.buildClassificationGrid = async function (data) {
     });
     grid += "</ul>";
   } else {
-    grid += '<p class="notice">Sorry, no matching vehicles could be found.</p>';
+    grid = '<p class="notice">Sorry, no matching vehicles could be found.</p>';
   }
   return grid;
 };

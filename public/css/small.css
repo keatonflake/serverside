@@ -179,6 +179,55 @@
     height: 20vw;
   }
 
+  /* classification */
+
+  #class-type {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  .list-fix {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    list-style: none;
+  }
+
+  .list-fix li {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    background: #fff;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .list-fix li:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .list-fix a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .namePrice {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .namePrice h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: black;
+  }
+
+  .namePrice span {
+    display: block;
+    font-size: 1.5em;
+    color: black;
+  }
+
   .vehicles {
     border: 2px solid black;
   }

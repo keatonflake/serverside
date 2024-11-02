@@ -21,11 +21,14 @@
 
   main {
     width: 90vw;
-    min-height: 100vh;
-    background-color: white;
+    height: max-content;
+
     margin: 0 auto;
+    padding: 2em;
+    background-color: white;
     border: 10px solid #00bcd4;
     border-radius: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
 
   a {
@@ -234,58 +237,61 @@
     height: 5em;
   }
 
-  /* classification view */
-  #inv-display {
-    min-height: 700px;
-    display: flex;
-    flex-wrap: wrap;
+  /* classification */
+
+  #class-type {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  .list-fix {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
   }
 
-  #class-type {
-    text-align: center;
-    padding: 1em;
-  }
-
-  #inv-display li {
-    background-color: white;
+  .list-fix li {
+    width: 200px;
+    margin: 1em;
     border: 1px solid #ccc;
     border-radius: 8px;
-    margin: 10px;
-    padding: 15px;
-    width: 250px;
-    height: 250px;
+    overflow: hidden;
     text-align: center;
+    background-color: white;
     transition: transform 0.3s;
   }
 
-  #inv-display li:hover {
+  .list-fix li:hover {
     transform: scale(1.05);
   }
 
-  #inv-display img {
-    max-width: 100%;
+  .list-fix img {
+    width: 100%;
     height: auto;
-    border-radius: 4px;
   }
 
   .namePrice {
-    margin-top: 10px;
+    padding: 0.5em;
   }
 
   .namePrice h2 {
-    font-size: 18px;
-    color: black;
-    margin: 5px 0;
+    font-size: 1.2em;
+    margin: 0.5em 0;
   }
 
   .namePrice span {
-    font-size: 16px;
+    font-size: 1em;
+    color: black;
+  }
+
+  .notice {
     color: black;
     font-weight: bold;
+    text-align: center;
+    padding: 1em;
   }
 
 
@@ -349,7 +355,6 @@
     text-align: center;
     margin: 20px 0;
   }
-
 
   footer {
     display: flex;
