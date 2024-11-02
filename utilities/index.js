@@ -44,11 +44,8 @@ Util.buildClassificationGrid = async function (data) {
         vehicle.inv_model +
         'details"><img src="' +
         vehicle.inv_thumbnail +
-        '" alt="Image of ' +
-        vehicle.inv_make +
-        " " +
-        vehicle.inv_model +
-        ' on CSE Motors" /></a>';
+        '" alt="';
+      vehicle.inv_make + " " + vehicle.inv_model + ' on CSE Motors" /></a>';
       grid += '<div class="namePrice">';
       grid += "<hr />";
       grid += "<h2>";
@@ -95,10 +92,10 @@ Util.buildDetailsTemp = async function (data) {
       data.inv_make
     } ${data.model}" class="vehicle-image">
       <p class="vehicle-description">${data.inv_description}</p>
-      <p class="vehicle-price">Price: $${(
+      <h2 class="vehicle-price">Price: $${(
         data.inv_price || 0
       ).toLocaleString()}</p>
-      <p class="vehicle-mileage">Mileage: ${
+      <h2 class="vehicle-mileage">Mileage: ${
         data.inv_miles ? data.inv_miles.toLocaleString() : "N/A"
       } miles</p>
       <p class="vehicle-color">Color: ${data.inv_color || "N/A"}</p>
@@ -121,5 +118,14 @@ Util.buildDetailsTemp = async function (data) {
  **************************************** */
 Util.handleErrors = (fn) => (req, res, next) =>
   Promise.resolve(fn(req, res, next)).catch(next);
+
+Util.serverErrors = async function (err, req, res, next, nav) {
+  console.error(err.stack);
+  res.status(500).render("errors/error", {
+    nav,
+    title: "500 Error",
+    message: "Something went wrong on the server.",
+  });
+};
 
 module.exports = Util;

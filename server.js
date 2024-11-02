@@ -10,8 +10,10 @@ const env = require("dotenv").config();
 const app = express();
 const static = require("./routes/static");
 const inventoryRoute = require("./routes/inventoryRoute");
+const serverErrorRoute = require("./routes/serverError");
 const expressLayouts = require("express-ejs-layouts");
 const baseController = require("./controllers/baseController");
+const errorController = require("./controllers/errController");
 const utilities = require("./utilities");
 /* ***********************
  * View Engine and Templates
@@ -27,6 +29,7 @@ app.use(static);
 app.get("/", utilities.handleErrors(baseController.buildHome));
 // Inventory routes
 app.use("/inv", inventoryRoute);
+app.use("/error", serverErrorRoute);
 
 app.use(async (req, res, next) => {
   next({ status: 404, message: "Sorry, we appear to have lost that page." });
@@ -35,17 +38,39 @@ app.use(async (req, res, next) => {
 /* ***********************
  * Express Error Handler
  *************************/
+// app.use(async (err, req, res, next) => {
+
+//   let nav = await utilities.getNav();
+//   console.error(`Error at: "${req.originalUrl}": ${err.message}`);
+//   if (err.status == 404) {
+//     message = err.message;
+//   } else {
+//     message = "Oh no! There was a crash. Maybe try a different route?";
+//   }
+//   res.render("errors/error", {
+//     title: err.status || "Server Error",
+//     message,
+//     nav,
+//   });
+// });
+
 app.use(async (err, req, res, next) => {
   let nav = await utilities.getNav();
   console.error(`Error at: "${req.originalUrl}": ${err.message}`);
-  if (err.status == 404) {
-    message = err.message;
-  } else {
-    message = "Oh no! There was a crash. Maybe try a different route?";
+  if (err.status === 404) {
+    return res.render("errors/error", {
+      title: err.status,
+      message: err.message,
+      nav,
+    });
   }
+  if (err.status === 500) {
+    return utilities.serverErrors(err, req, res, next, nav);
+  }
+
   res.render("errors/error", {
-    title: err.status || "Server Error",
-    message,
+    title: "Error",
+    message: "An unexpected error occurred.",
     nav,
   });
 });
