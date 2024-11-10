@@ -13,6 +13,7 @@ const app = express();
 const static = require("./routes/static");
 const inventoryRoute = require("./routes/inventoryRoute");
 const serverErrorRoute = require("./routes/serverError");
+const accountsRoute = require("./routes/accountRoute");
 const expressLayouts = require("express-ejs-layouts");
 const baseController = require("./controllers/baseController");
 const errorController = require("./controllers/errController");
@@ -56,6 +57,7 @@ app.get("/", utilities.handleErrors(baseController.buildHome));
 // Inventory routes
 app.use("/inv", inventoryRoute);
 app.use("/error", serverErrorRoute);
+app.use("/account", accountsRoute);
 
 app.use(async (req, res, next) => {
   next({ status: 404, message: "Sorry, we appear to have lost that page." });

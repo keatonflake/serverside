@@ -1,0 +1,13 @@
+<div class="login-form-box">
+    <%- messages() %>
+
+        <h1></h1>
+        <form class="login-form" action="/account/login" method="">
+            <label for="account_email">Email</label> <br>
+            <input type="text" name="account_email" class="login-input"> <br>
+            <label for="account_password">Password</label> <br>
+            <input type="text" name="account_password" class="login-input"> <br> <br>
+            <input type="submit" id="login-button" value="Submit">
+        </form>
+        <h3>No account? <a href="/account/register">Sign-up</a></h3>
+</div>

@@ -356,6 +356,98 @@
     margin: 20px 0;
   }
 
+  /* login details */
+  .login-form-box {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    background-color: #27239d;
+    padding: 1em;
+    width: 500px;
+    margin: 1em auto;
+    border-radius: 10px;
+  }
+
+  .login-form {
+    border: 3px solid white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 1em;
+  }
+
+  .login-input {
+    width: 350px;
+    margin-bottom: 1em;
+  }
+
+  #login-button {
+    border: none;
+    background-color: white;
+    padding: .3em .5em;
+    border-radius: 10px;
+  }
+
+  #login-button:hover {
+    background-color: black;
+    color: white;
+  }
+
+  .login-form-box h3 {
+    margin-top: 1em;
+  }
+
+  .login-form-box h3 a {
+    color: white;
+    text-decoration: underline;
+  }
+
+  /* registration */
+  .registration-form-box {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    background-color: #27239d;
+    padding: 1em;
+    width: 500px;
+    margin: 1em auto;
+    border-radius: 10px;
+  }
+
+  .registration-form {
+    border: 3px solid white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 1em;
+  }
+
+  .registration-input {
+    width: 350px;
+    margin-bottom: 1em;
+  }
+
+  #register-button {
+    border: none;
+    background-color: white;
+    padding: .3em .5em;
+    border-radius: 10px;
+  }
+
+  #register-button:hover {
+    background-color: black;
+    color: white;
+  }
+
+  .registration-form-box h3 {
+    margin-top: 1em;
+  }
+
+  .registration-form-box h3 a {
+    color: white;
+    text-decoration: underline;
+  }
+
   footer {
     display: flex;
     flex-direction: row;
