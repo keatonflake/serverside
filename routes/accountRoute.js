@@ -2,17 +2,27 @@ const express = require("express");
 const router = new express.Router();
 const accountController = require("../controllers/accountController");
 const utilities = require("../utilities");
-const regValidate = require("../utilities/account-validation");
+const accountValidate = require("../utilities/account-validation");
 
 router.get("/login", utilities.handleErrors(accountController.buildLogin));
+// Process the login attempt
+router.post(
+  "/login",
+  accountValidate.loginRules(),
+  accountValidate.checkLoginData,
+  (req, res) => {
+    res.status(200).send("Login process complete");
+  }
+);
+
 router.get(
   "/register",
   utilities.handleErrors(accountController.buildRegister)
 );
 router.post(
   "/register",
-  regValidate.registationRules(),
-  regValidate.checkRegData,
+  accountValidate.registationRules(),
+  accountValidate.checkRegData,
   utilities.handleErrors(accountController.registerAccount)
 );
 
