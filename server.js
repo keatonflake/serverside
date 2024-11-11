@@ -18,6 +18,10 @@ const expressLayouts = require("express-ejs-layouts");
 const baseController = require("./controllers/baseController");
 const errorController = require("./controllers/errController");
 const utilities = require("./utilities");
+const bodyParser = require("body-parser");
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 /* ***********************
  * Middleware

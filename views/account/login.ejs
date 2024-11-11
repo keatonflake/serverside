@@ -1,13 +1,35 @@
 <div class="login-form-box">
     <%- messages() %>
 
-        <h1></h1>
-        <form class="login-form" action="/account/login" method="">
+        <h1>Login</h1>
+        <form class="login-form" action="/account/login" method="POST">
             <label for="account_email">Email</label> <br>
-            <input type="text" name="account_email" class="login-input"> <br>
-            <label for="account_password">Password</label> <br>
-            <input type="text" name="account_password" class="login-input"> <br> <br>
+            <input type="text" name="account_email" class="login-input" required> <br>
+
+            <label for="account_password">Password:</label> <br>
+            <input type="password" name="account_password" id="accountPassword" class="login-input" required
+                pattern="^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\\s).{12,}$"> <br>
+
+            <span id="pswBtn" style="cursor: pointer;">Show Password</span>
+            <br><br>
+
             <input type="submit" id="login-button" value="Submit">
         </form>
         <h3>No account? <a href="/account/register">Sign-up</a></h3>
 </div>
+
+<script>
+    const pswBtn = document.querySelector("#pswBtn");
+    pswBtn.addEventListener("click", function () {
+        const pswInput = document.getElementById("accountPassword"); // Use correct ID here
+        const type = pswInput.getAttribute("type");
+
+        if (type === "password") {
+            pswInput.setAttribute("type", "text");
+            pswBtn.innerHTML = "Hide Password";
+        } else {
+            pswInput.setAttribute("type", "password");
+            pswBtn.innerHTML = "Show Password";
+        }
+    });
+</script>
