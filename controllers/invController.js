@@ -64,7 +64,7 @@ invCont.addClassification = async (req, res) => {
       );
       return res.status(201).render("inventory/management", {
         title: "Vehicle Management",
-        nav,
+        nav: await utilities.getNav(),
         errors: null,
       });
     } else {
