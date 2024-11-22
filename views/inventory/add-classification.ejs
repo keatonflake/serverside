@@ -1,0 +1,48 @@
+<div class="add-classification-box">
+    <%- messages() %>
+
+        <% if (errors) { %>
+            <ul class="notice">
+                <% errors.array().forEach(error=> { %>
+                    <li>
+                        <%= error.msg %>
+                    </li>
+                    <% }) %>
+            </ul>
+            <% } %>
+
+                <h1>Add New Classification</h1>
+                <form id="classificationForm" action="/inv/add-classification" method="POST" novalidate>
+                    <label for="classification_name">Classification Name</label> <br>
+                    <input type="text" name="classification_name" id="classification_name" pattern="^[A-Za-z0-9]+$"
+                        required title="Classification name must not contain spaces or special characters."
+                        placeholder="Enter Classification Name"> <br>
+
+                    <p>Note: Classification name must not contain spaces or special characters.</p>
+
+                    <input type="submit" value="Add Classification">
+                </form>
+</div>
+
+<script>
+    // Client-side validation for the classification name
+    document.getElementById("classificationForm").addEventListener("submit", function (event) {
+        const classificationName = document.getElementById("classification_name").value;
+        const pattern = /^[A-Za-z0-9]+$/;
+
+        if (!pattern.test(classificationName)) {
+            event.preventDefault();
+            alert("Classification name must not contain spaces or special characters.");
+        }
+    });
+</script>
+
+<style>
+    .add-classification-box {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f7f7f7;
+        border-radius: 8px;
+    }
+</style>

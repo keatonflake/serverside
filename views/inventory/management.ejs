@@ -1,0 +1,55 @@
+<div class="inventory-management-box">
+    <!-- Flash messages section -->
+    <%- messages() %>
+
+        <% if (errors) { %>
+            <ul class="notice">
+                <% errors.array().forEach(error=> { %>
+                    <li>
+                        <%= error.msg %>
+                    </li>
+                    <% }) %>
+            </ul>
+            <% } %>
+
+                <!-- Title and Header -->
+                <h1>
+                    <%= title %>
+                </h1>
+
+                <!-- Links to Add Classification and Add Inventory -->
+                <div class="inventory-actions">
+                    <a href="/inv/add-classification" class="action-link">Add New Classification</a>
+                    <!-- MVC routed link -->
+                    <a href="/inv/add-inventory" class="action-link">Add New Inventory</a> <!-- MVC routed link -->
+                </div>
+</div>
+
+<style>
+    .inventory-management-box {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f7f7f7;
+        border-radius: 8px;
+    }
+
+    .inventory-actions {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .action-link {
+        display: inline-block;
+        margin: 10px;
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .action-link:hover {
+        background-color: #0056b3;
+    }
+</style>
