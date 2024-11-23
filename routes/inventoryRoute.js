@@ -24,6 +24,7 @@ router.get(
 router.post(
   "/add-classification",
   inventoryValidate.classificationRules(),
+  inventoryValidate.checkClassificationData,
   utilities.handleErrors(invCont.addClassification)
 );
 
@@ -35,6 +36,7 @@ router.get(
 router.post(
   "/add-inventory",
   inventoryValidate.inventoryRules(),
+  inventoryValidate.checkInventoryData,
   utilities.handleErrors(invCont.addInventory)
 );
 

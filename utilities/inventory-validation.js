@@ -22,6 +22,25 @@ validate.classificationRules = () => {
   ];
 };
 
+validate.checkClassificationData = async (req, res, next) => {
+  const { classification_name } = req.body;
+
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    res.render("inventory/add-classification", {
+      errors: errors.array(),
+      title: "Add Classification",
+      nav,
+      classification_name,
+    });
+    return;
+  }
+
+  next();
+};
+
 validate.inventoryRules = () => {
   return [
     body("inv_make")
@@ -87,6 +106,45 @@ validate.inventoryRules = () => {
         }
       }),
   ];
+};
+
+validate.checkInventoryData = async (req, res, next) => {
+  const {
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_price,
+    inv_miles,
+    inv_color,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    classification_id,
+  } = req.body;
+
+  const errors = validationResult(req);
+
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    res.render("inventory/add-inventory", {
+      errors: errors.array(),
+      title: "Add Inventory",
+      nav,
+      inv_make,
+      inv_model,
+      inv_year,
+      inv_price,
+      inv_miles,
+      inv_color,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      classification_id,
+    });
+    return;
+  }
+
+  next();
 };
 
 module.exports = validate;
