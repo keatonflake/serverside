@@ -93,6 +93,18 @@ invCont.buildAddInventoryView = async function (req, res, next) {
       nav: await utilities.getNav(),
       classificationList,
       errors: null,
+      locals: {
+        inv_make: req.body.inv_make || "",
+        inv_model: req.body.inv_model || "",
+        inv_year: req.body.inv_year || "",
+        inv_description: req.body.inv_description || "",
+        inv_image: req.body.inv_image || "/images/no-image.png",
+        inv_thumbnail:
+          req.body.inv_thumbnail || "/images/no-image-thumbnail.png",
+        inv_price: req.body.inv_price || "",
+        inv_miles: req.body.inv_miles || "",
+        inv_color: req.body.inv_color || "",
+      },
     });
   } catch (error) {
     console.error("Error loading inventory form:", error);

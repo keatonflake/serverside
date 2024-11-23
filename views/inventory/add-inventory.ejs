@@ -14,55 +14,54 @@
                 <h1>Add New Vehicle</h1>
                 <form action="/inv/add-inventory" method="POST" class="inventory-form">
                     <label for="classification_id">Classification</label><br>
-                    <select name="classification_id" id="classification_id">
-                        <%- classificationList %>
-                    </select><br><br>
+                    <%- classificationList %><br><br>
 
-                    <!-- Vehicle Make -->
-                    <label for="inv_make">Make</label><br>
-                    <input type="text" name="inv_make" id="inv_make" required value="<%= locals.inv_make %>" /><br><br>
+                        <!-- Vehicle Make -->
+                        <label for="inv_make">Make</label><br>
+                        <input type="text" name="inv_make" id="inv_make" required
+                            value="<%= locals.inv_make %>" /><br><br>
 
-                    <!-- Vehicle Model -->
-                    <label for="inv_model">Model</label><br>
-                    <input type="text" name="inv_model" id="inv_model" required
-                        value="<%= locals.inv_model %>" /><br><br>
+                        <!-- Vehicle Model -->
+                        <label for="inv_model">Model</label><br>
+                        <input type="text" name="inv_model" id="inv_model" required
+                            value="<%= locals.inv_model %>" /><br><br>
 
-                    <!-- Vehicle Year -->
-                    <label for="inv_year">Year</label><br>
-                    <input type="number" name="inv_year" id="inv_year" required min="1900" max="2100"
-                        value="<%= locals.inv_year %>" /><br><br>
+                        <!-- Vehicle Year -->
+                        <label for="inv_year">Year</label><br>
+                        <input type="number" name="inv_year" id="inv_year" required min="1900" max="2100"
+                            value="<%= locals.inv_year %>" /><br><br>
 
-                    <!-- Vehicle Description -->
-                    <label for="inv_description">Description</label><br>
-                    <textarea name="inv_description" id="inv_description"
-                        required><%= locals.inv_description %></textarea><br><br>
+                        <!-- Vehicle Description -->
+                        <label for="inv_description">Description</label><br>
+                        <textarea name="inv_description" id="inv_description"
+                            required><%= locals.inv_description %></textarea><br><br>
 
-                    <!-- Vehicle Image -->
-                    <label for="inv_image">Image Path</label><br>
-                    <input type="text" name="inv_image" id="inv_image" required
-                        value="<%= locals.inv_image || '/images/no-image.png' %>" /><br><br>
+                        <!-- Vehicle Image -->
+                        <label for="inv_image">Image Path</label><br>
+                        <input type="text" name="inv_image" id="inv_image" required
+                            value="<%= locals.inv_image || '/images/no-image.png' %>" /><br><br>
 
-                    <!-- Thumbnail Image -->
-                    <label for="inv_thumbnail">Thumbnail Path</label><br>
-                    <input type="text" name="inv_thumbnail" id="inv_thumbnail" required
-                        value="<%= locals.inv_thumbnail || '/images/no-image-thumbnail.png' %>" /><br><br>
+                        <!-- Thumbnail Image -->
+                        <label for="inv_thumbnail">Thumbnail Path</label><br>
+                        <input type="text" name="inv_thumbnail" id="inv_thumbnail" required
+                            value="<%= locals.inv_thumbnail || '/images/no-image-thumbnail.png' %>" /><br><br>
 
-                    <!-- Vehicle Price -->
-                    <label for="inv_price">Price</label><br>
-                    <input type="number" name="inv_price" id="inv_price" required min="0" step="0.01"
-                        value="<%= locals.inv_price %>" /><br><br>
+                        <!-- Vehicle Price -->
+                        <label for="inv_price">Price</label><br>
+                        <input type="number" name="inv_price" id="inv_price" required min="0" step="0.01"
+                            value="<%= locals.inv_price %>" /><br><br>
 
-                    <!-- Vehicle Miles -->
-                    <label for="inv_miles">Miles</label><br>
-                    <input type="number" name="inv_miles" id="inv_miles" required min="0"
-                        value="<%= locals.inv_miles %>" /><br><br>
+                        <!-- Vehicle Miles -->
+                        <label for="inv_miles">Miles</label><br>
+                        <input type="number" name="inv_miles" id="inv_miles" required min="0"
+                            value="<%= locals.inv_miles %>" /><br><br>
 
-                    <!-- Vehicle Color -->
-                    <label for="inv_color">Color</label><br>
-                    <input type="text" name="inv_color" id="inv_color" required
-                        value="<%= locals.inv_color %>" /><br><br>
+                        <!-- Vehicle Color -->
+                        <label for="inv_color">Color</label><br>
+                        <input type="text" name="inv_color" id="inv_color" required
+                            value="<%= locals.inv_color %>" /><br><br>
 
-                    <input type="submit" value="Add Vehicle" />
+                        <input type="submit" value="Add Vehicle" />
                 </form>
 </div>
 
