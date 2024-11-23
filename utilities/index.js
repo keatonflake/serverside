@@ -53,7 +53,7 @@ Util.buildClassificationGrid = async function (data) {
       grid += "<hr />";
       grid += "<h2>";
       grid +=
-        '<a href="../../inv/detail/' +
+        '<a href="../../inv/type/detail/' +
         vehicle.inv_id +
         '" title="View ' +
         vehicle.inv_make +
