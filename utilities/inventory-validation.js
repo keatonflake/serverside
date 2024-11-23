@@ -83,28 +83,13 @@ validate.inventoryRules = () => {
       .isLength({ min: 1 })
       .withMessage("Description cannot be empty"),
 
-    body("inv_image")
-      .optional()
-      .isURL()
-      .withMessage("Please provide a valid image URL"),
+    body("inv_image").optional(),
 
-    body("inv_thumbnail")
-      .optional()
-      .isURL()
-      .withMessage("Please provide a valid thumbnail URL"),
+    body("inv_thumbnail").optional(),
 
     body("classification_id")
       .notEmpty()
-      .withMessage("Please select a vehicle classification")
-      .custom(async (classification_id) => {
-        const classificationExists =
-          await inventoryModel.checkExistingClassification(classification_id);
-        if (!classificationExists) {
-          throw new Error(
-            "Selected classification is not valid. Please choose a valid classification."
-          );
-        }
-      }),
+      .withMessage("Please select a vehicle classification"),
   ];
 };
 
@@ -123,6 +108,7 @@ validate.checkInventoryData = async (req, res, next) => {
   } = req.body;
 
   const errors = validationResult(req);
+  console.log(errors);
 
   if (!errors.isEmpty()) {
     let nav = await utilities.getNav();
