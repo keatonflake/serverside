@@ -19,6 +19,7 @@ const baseController = require("./controllers/baseController");
 const errorController = require("./controllers/errController");
 const utilities = require("./utilities");
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -45,6 +46,11 @@ app.use(function (req, res, next) {
   res.locals.messages = require("express-messages")(req, res);
   next();
 });
+
+app.use(cookieParser());
+app.use(utilities.checkJWTToken);
+
+app.use(utilities.checkJWTToken);
 
 /* ***********************
  * View Engine and Templates
