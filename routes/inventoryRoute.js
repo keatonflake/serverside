@@ -40,4 +40,25 @@ router.post(
   utilities.handleErrors(invCont.addInventory)
 );
 
+router.get(
+  "/getInventory/:classification_id",
+  utilities.handleErrors(invCont.getInventoryJSON)
+);
+
+router.get("/edit/:inv_id", utilities.handleErrors(invCont.buildEditView));
+
+router.post(
+  "/update/",
+  inventoryValidate.inventoryRules(),
+  inventoryValidate.checkUpdateData,
+  utilities.handleErrors(invCont.updateInventory)
+);
+
+router.get(
+  "/delete/:inv_id",
+  utilities.handleErrors(invCont.buildDeleteInventoryView)
+);
+
+router.post("/delete/:inv_id", utilities.handleErrors(invCont.deleteInventory));
+
 module.exports = router;

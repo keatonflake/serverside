@@ -1,0 +1,169 @@
+<div class="inventory-form-box">
+    <%- messages() %>
+
+        <% if (errors) { %>
+            <ul class="notice">
+                <% errors.array().forEach((error)=> { %>
+                    <li>
+                        <%= error.msg %>
+                    </li>
+                    <% }) %>
+            </ul>
+            <% } %>
+
+                <h1>Add New Vehicle</h1>
+                <form action="/inv/update" method="post" class="inventory-form">
+                    <label for="classification_id">Classification</label><br>
+                    <%- classificationSelect %><br><br>
+
+                        <!-- Vehicle Make -->
+                        <label for="inv_make">Make</label><br>
+                        <input type="text" name="inv_make" id="inv_make" required
+                            value="<%= locals.inv_make %>" /><br><br>
+
+                        <!-- Vehicle Model -->
+                        <label for="inv_model">Model</label><br>
+                        <input type="text" name="inv_model" id="inv_model" required
+                            value="<%= locals.inv_model %>" /><br><br>
+
+                        <!-- Vehicle Year -->
+                        <label for="inv_year">Year</label><br>
+                        <input type="number" name="inv_year" id="inv_year" required min="1900" max="2100"
+                            value="<%= locals.inv_year %>" /><br><br>
+
+                        <!-- Vehicle Description -->
+                        <label for="inv_description">Description</label><br>
+                        <textarea name="inv_description" id="inv_description"
+                            required><%= locals.inv_description %></textarea><br><br>
+
+                        <!-- Vehicle Image -->
+                        <label for="inv_image">Image Path</label><br>
+                        <input type="text" name="inv_image" id="inv_image" required
+                            value="<%= locals.inv_image || '/images/no-image.png' %>" /><br><br>
+
+                        <!-- Thumbnail Image -->
+                        <label for="inv_thumbnail">Thumbnail Path</label><br>
+                        <input type="text" name="inv_thumbnail" id="inv_thumbnail" required
+                            value="<%= locals.inv_thumbnail || '/images/no-image-thumbnail.png' %>" /><br><br>
+
+                        <!-- Vehicle Price -->
+                        <label for="inv_price">Price</label><br>
+                        <input type="number" name="inv_price" id="inv_price" required min="0" step="0.01"
+                            value="<%= locals.inv_price %>" /><br><br>
+
+                        <!-- Vehicle Miles -->
+                        <label for="inv_miles">Miles</label><br>
+                        <input type="number" name="inv_miles" id="inv_miles" required min="0"
+                            value="<%= locals.inv_miles %>" /><br><br>
+
+                        <!-- Vehicle Color -->
+                        <label for="inv_color">Color</label><br>
+                        <input type="text" name="inv_color" id="inv_color" required
+                            value="<%= locals.inv_color %>" /><br><br>
+
+                        <input type="submit" name="submit" value="Update Vehicle">
+
+                        <input type="hidden" name="inv_id" <% if(locals.inv_id) { %> value="<%= locals.inv_id %>"
+                            <% } %>>
+                </form>
+</div>
+
+<script>
+    document.querySelector("#inv_year").addEventListener("input", function () {
+        const year = this.value;
+        if (year < 1900 || year > 2100) {
+            this.setCustomValidity("Please enter a year between 1900 and 2100.");
+        } else {
+            this.setCustomValidity("");
+        }
+    });
+</script>
+
+<style>
+    .inventory-form-box {
+        text-align: center;
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .inventory-form-box h1 {
+        width: fit-content;
+        text-align: center;
+        font-size: 1.8em;
+        margin: 0 auto 1em auto;
+        color: #333;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        color: #555;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+        box-sizing: border-box;
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: black;
+    }
+
+    .notice {
+        list-style-type: none;
+        padding: 10px;
+        margin-bottom: 15px;
+        background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
+        color: #721c24;
+        border-radius: 4px;
+    }
+
+    .notice li {
+        margin: 5px 0;
+    }
+
+    @media (max-width: 768px) {
+        .inventory-form-box {
+            padding: 15px;
+        }
+
+        .btn {
+            font-size: 0.9rem;
+        }
+    }
+</style>

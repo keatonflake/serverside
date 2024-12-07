@@ -4,7 +4,11 @@ const accountController = require("../controllers/accountController");
 const utilities = require("../utilities");
 const accountValidate = require("../utilities/account-validation");
 
-router.get("/", utilities.handleErrors(accountController.buildAccountView));
+router.get(
+  "/",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildAccountView)
+);
 
 router.get("/login", utilities.handleErrors(accountController.buildLogin));
 // Process the login attempt
