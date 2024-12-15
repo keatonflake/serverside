@@ -4,14 +4,8 @@ const accountController = require("../controllers/accountController");
 const utilities = require("../utilities");
 const accountValidate = require("../utilities/account-validation");
 
-router.get(
-  "/",
-  utilities.checkLogin,
-  utilities.handleErrors(accountController.buildAccountView)
-);
-
+// Non-:id routes should be placed first
 router.get("/login", utilities.handleErrors(accountController.buildLogin));
-// Process the login attempt
 router.post(
   "/login",
   accountValidate.loginRules(),
@@ -33,14 +27,24 @@ router.post(
   utilities.handleErrors(accountController.registerAccount)
 );
 
+router.get("/logout", utilities.handleErrors(accountController.logout));
+
 router.get(
-  "/update/:id",
-  utilities.handleErrors(accountController.buildUpdateView)
+  "/",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildAccountView)
 );
 
+router.get(
+  "/update",
+  utilities.checkLogin,
+  utilities.handleErrors(accountController.buildUpdateView)
+);
 router.post(
   "/update",
   utilities.handleErrors(accountController.updateAccountDetails)
 );
+
+router.post("/change-password", accountController.changePassword);
 
 module.exports = router;

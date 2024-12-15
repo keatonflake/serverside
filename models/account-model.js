@@ -74,7 +74,7 @@ async function updateAccountDetails(
   });
   try {
     const sql =
-      "UPDATE public.accounts SET first_name = $1, last_name = $2, account_email = $3 WHERE account_id = $4 RETURNING *";
+      "UPDATE public.account SET account_firstname = $1, account_lastname = $2, account_email = $3 WHERE account_id = $4 RETURNING *";
     const data = await pool.query(sql, [
       first_name,
       last_name,
@@ -88,10 +88,29 @@ async function updateAccountDetails(
   }
 }
 
+async function updatePassword(account_id, hashedPassword) {
+  try {
+    const sql = `
+      UPDATE account
+      SET account_password = $1
+      WHERE account_id = $2
+    `;
+
+    const params = [hashedPassword, account_id];
+    const result = await pool.query(sql, params);
+
+    return result.rowCount > 0;
+  } catch (error) {
+    console.error("Error updating password:", error);
+    throw new Error("Database query failed");
+  }
+}
+
 module.exports = {
   registerAccount,
   checkExistingEmail,
   getAccountByEmail,
   getAccountById,
   updateAccountDetails,
+  updatePassword,
 };

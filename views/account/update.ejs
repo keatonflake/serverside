@@ -73,8 +73,8 @@
         border: 1px solid #ccc;
         border-radius: 8px;
         background-color: #f9f9f9;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         font-family: Arial, sans-serif;
+        box-sizing: border-box;
     }
 
     /* Styling for Messages and Errors */
@@ -95,10 +95,12 @@
 
     /* Styling for Headings */
     .account-form-box h1 {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
         text-align: center;
-        color: #333;
+        color: black;
+        font-size: 1.5rem;
+        max-width: 70vw;
+        margin: 0 auto;
+        padding-bottom: 1em;
     }
 
     /* Styling for Input Fields and Labels */
@@ -107,10 +109,11 @@
     }
 
     .account-form-box label {
+        font-size: large;
         display: block;
         font-weight: bold;
         margin-bottom: 0.5rem;
-        color: #555;
+        color: black;
     }
 
     .account-form-box input[type="text"],
@@ -123,15 +126,14 @@
         font-size: 1rem;
         box-sizing: border-box;
         background-color: #fff;
-        color: #333;
+        color: black;
     }
 
     .account-form-box input[type="text"]:focus,
     .account-form-box input[type="email"]:focus,
     .account-form-box input[type="password"]:focus {
-        border-color: #007bff;
+        border-color: black;
         outline: none;
-        box-shadow: 0 0 3px rgba(0, 123, 255, 0.25);
     }
 
     /* Styling for Password Hint */
@@ -149,23 +151,43 @@
         border-radius: 4px;
         font-size: 1rem;
         color: #fff;
-        background-color: #007bff;
+        background-color: black;
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
 
     .account-form-box input[type="submit"]:hover {
-        background-color: #0056b3;
+        background-color: black;
     }
 
     /* Responsive Design */
     @media (max-width: 600px) {
+
+        /* Adjust form box padding for smaller screens */
         .account-form-box {
             padding: 1.5rem;
         }
 
+        /* Reduce heading size for mobile */
         .account-form-box h1 {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
+        }
+
+        /* Reduce font size of input fields and buttons */
+        .account-form-box input[type="text"],
+        .account-form-box input[type="email"],
+        .account-form-box input[type="password"],
+        .account-form-box input[type="submit"] {
+            font-size: 0.9rem;
+        }
+
+        /* Adjust space between form elements for small screens */
+        .account-form-box form div {
+            margin-bottom: 1.2rem;
+        }
+
+        .account-form-box p {
+            font-size: 0.75rem;
         }
     }
 </style>

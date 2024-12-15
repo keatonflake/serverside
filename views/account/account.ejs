@@ -1,4 +1,4 @@
-<div>
+<div class="container">
     <%- messages() %>
         <% if (errors) { %>
             <ul class="notice">
@@ -13,19 +13,101 @@
                 <h1>You're Logged In</h1>
 
                 <!-- Greet the user by first name -->
-                <h2>Welcome <%= accountData.account_firstname %>
+                <h2>Welcome <%= account.account_firstname %>
                 </h2>
 
                 <!-- Update account information link (visible to all account types) -->
-                <p>
-                    <a href="/account/update/<%= accountData.account_id %>">Update Account Information</a>
+                <p class="update-link">
+                    <a href="/account/update">Update Account Information</a>
                 </p>
 
-                <% if (accountData.account_type==="Employee" || accountData.account_type==="Admin" ) { %>
+                <% if (account.account_type==="Employee" || account.account_type==="Admin" ) { %>
                     <!-- Manage Inventory section for Employee/Admin -->
                     <h3>Inventory Management</h3>
-                    <p>
+                    <p class="inventory-link">
                         <a href="../inv">Go to Inventory Management</a>
                     </p>
                     <% } %>
 </div>
+
+
+<style>
+    /* General container for the entire section */
+    .container {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Notices or error messages */
+    .notice {
+        color: black;
+        padding: 10px;
+        border-radius: 4px;
+        list-style-type: none;
+        margin-bottom: 20px;
+    }
+
+    .notice li {
+        font-size: 14px;
+    }
+
+    /* Main header */
+    h1 {
+        color: black;
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    /* Subheader greeting */
+    h2 {
+        color: black;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    /* Update account information link */
+    .update-link a {
+        color: black;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .update-link a:hover {
+        text-decoration: underline;
+    }
+
+    /* Inventory Management link */
+    .inventory-link a {
+        color: black;
+        text-decoration: none;
+        font-size: 16px;
+    }
+
+    .inventory-link a:hover {
+        text-decoration: underline;
+    }
+
+    /* Responsive styling for smaller screens */
+    @media (max-width: 600px) {
+        .container {
+            padding: 15px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+
+        .update-link a,
+        .inventory-link a {
+            font-size: 14px;
+        }
+    }
+</style>
