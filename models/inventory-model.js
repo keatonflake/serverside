@@ -134,39 +134,16 @@ async function updateInventory(
     console.error("model error: " + error);
   }
 }
-
-async function deleteInventory(
-  inv_id,
-  inv_make,
-  inv_model,
-  inv_description,
-  inv_image,
-  inv_thumbnail,
-  inv_price,
-  inv_year,
-  inv_miles,
-  inv_color,
-  classification_id
-) {
+async function deleteInventory(inv_id) {
   try {
-    const sql =
-      "DELETE FROM public.inventory SET inv_make = $1, inv_model = $2, inv_description = $3, inv_image = $4, inv_thumbnail = $5, inv_price = $6, inv_year = $7, inv_miles = $8, inv_color = $9, classification_id = $10 WHERE inv_id = $11 RETURNING *";
-    const data = await pool.query(sql, [
-      inv_make,
-      inv_model,
-      inv_description,
-      inv_image,
-      inv_thumbnail,
-      inv_price,
-      inv_year,
-      inv_miles,
-      inv_color,
-      classification_id,
-      inv_id,
-    ]);
-    return data.rows[0];
+    const sql = "DELETE FROM inventory WHERE inv_id = $1";
+    const data = await pool.query(sql, [inv_id]);
+    if (data.rowCount > 0) {
+      return true;
+    }
+    return false;
   } catch (error) {
-    console.error("model error: " + error);
+    throw new Error("Delete Inventory Error: " + error.message);
   }
 }
 

@@ -12,7 +12,7 @@
             <% } %>
 
                 <h1>Delete Vehicle</h1>
-                <form action="/inv/delete" method="post" class="inventory-form">
+                <form action="/inv/delete/<%= locals.inv_id %>" method="post" class="inventory-form">
 
                     <!-- Vehicle Make -->
                     <label for="inv_make">Make</label><br>
@@ -60,7 +60,7 @@
                         value="<%= locals.inv_color %>" /><br><br>
 
                     <p>Confirm Deletion - The delete is permanent.</p>
-
+                    <input type="hidden" name="inv_id" value="<%= locals.inv_id %>" />
                     <input type="submit" name="delete" value="delete Vehicle">
 
                 </form>

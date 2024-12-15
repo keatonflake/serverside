@@ -14,7 +14,11 @@ router.get(
   utilities.handleErrors(invCont.buildByVehicleId)
 );
 
-router.get("/", utilities.handleErrors(invCont.buildManagementView));
+router.get(
+  "/",
+  utilities.checkAccountType,
+  utilities.handleErrors(invCont.buildManagementView)
+);
 
 router.get(
   "/add-classification",

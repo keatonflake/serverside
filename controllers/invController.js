@@ -289,7 +289,7 @@ invCont.buildDeleteInventoryView = async function (req, res, next) {
   );
   console.log(itemData.classification_id);
   const itemName = `${itemData.inv_make} ${itemData.inv_model}`;
-  res.render("inventory/delete-inventory", {
+  res.render("inventory/delete", {
     title: "Edit " + itemName,
     nav,
     classificationSelect: classificationSelect,
@@ -323,35 +323,39 @@ invCont.deleteInventory = async function (req, res, next) {
     inv_color,
     classification_id,
   } = req.body;
-  const deleteResult = await invModel.deleteInventory(inv_id);
 
-  if (updateResult) {
-    const itemName = deleteResult.inv_make + " " + deleteResult.inv_model;
-    req.flash("notice", `The ${itemName} was successfully deleted.`);
+  try {
+    const deleteResult = await invModel.deleteInventory(inv_id);
+
+    if (deleteResult) {
+      req.flash("notice", `The vehicle was successfully deleted.`);
+      res.redirect("/inv/");
+    } else {
+      const classificationSelect = await utilities.buildClassificationList(
+        classification_id
+      );
+      req.flash("notice", "Sorry, the delete failed.");
+      res.status(501).render("inventory/delete", {
+        title: `Delete ${inv_make} ${inv_model}`,
+        nav,
+        classificationSelect,
+        errors: null,
+        inv_id,
+        inv_make,
+        inv_model,
+        inv_year,
+        inv_description,
+        inv_image,
+        inv_thumbnail,
+        inv_price,
+        inv_miles,
+        inv_color,
+        classification_id,
+      });
+    }
+  } catch (error) {
+    req.flash("notice", "An error occurred during deletion.");
     res.redirect("/inv/");
-  } else {
-    const classificationSelect = await utilities.buildClassificationList(
-      classification_id
-    );
-    const itemName = `${inv_make} ${inv_model}`;
-    req.flash("notice", "Sorry, the delete failed.");
-    res.status(501).render("inventory/delete-inventory", {
-      title: "Delete " + itemName,
-      nav,
-      classificationSelect: classificationSelect,
-      errors: null,
-      inv_id,
-      inv_make,
-      inv_model,
-      inv_year,
-      inv_description,
-      inv_image,
-      inv_thumbnail,
-      inv_price,
-      inv_miles,
-      inv_color,
-      classification_id,
-    });
   }
 };
 

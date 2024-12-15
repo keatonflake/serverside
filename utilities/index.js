@@ -188,4 +188,22 @@ Util.checkLogin = (req, res, next) => {
   }
 };
 
+/* ****************************************
+ * Middleware to check account type
+ **************************************** */
+Util.checkAccountType = (req, res, next) => {
+  const { accountData } = res.locals;
+
+  if (
+    accountData &&
+    (accountData.account_type === "Employee" ||
+      accountData.account_type === "Admin")
+  ) {
+    next(); // Allow access if the account type is valid
+  } else {
+    req.flash("notice", "You do not have permission to access this resource.");
+    return res.redirect("/account/login"); // Redirect if not authorized
+  }
+};
+
 module.exports = Util;

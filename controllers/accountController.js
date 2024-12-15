@@ -154,10 +154,62 @@ async function buildAccountView(req, res) {
   });
 }
 
+async function buildUpdateView(req, res) {
+  let nav = await utilities.getNav();
+  let account_id = req.params.id;
+  let accountData = await accountModel.getAccountById(account_id);
+  res.render("account/update", {
+    title: "Update Account Details",
+    nav,
+    account_id: accountData.account_id,
+    first_name: accountData.account_firstname,
+    last_name: accountData.account_lastname,
+    email: accountData.account_email,
+    errors: null,
+  });
+}
+
+async function updateAccountDetails(req, res) {
+  let nav = await utilities.getNav();
+  const { account_id, first_name, last_name, account_email } = req.body; // Correct destructuring
+
+  try {
+    const updateResult = await accountModel.updateAccountDetails(
+      account_id,
+      first_name,
+      last_name,
+      account_email
+    );
+
+    if (updateResult) {
+      req.flash("notice", "Account successfully updated.");
+      return res.redirect("/account");
+    }
+
+    req.flash("notice", "Sorry, the account update failed.");
+    res.status(501).render(`/account/update/${account_id}`, {
+      title: "Update Account",
+      nav,
+      account_id,
+      first_name,
+      last_name,
+      account_email,
+      errors: null,
+    });
+  } catch (error) {
+    console.error("Error updating account:", error);
+    req.flash("notice", "An error occurred while updating the account.");
+    res.status(500).redirect(`/account/update/${account_id}`);
+  }
+}
+
 module.exports = {
   accountLogin,
   buildLogin,
   buildRegister,
   registerAccount,
   buildAccountView,
+  buildUpdateView,
+  updateAccountDetails,
+  // updateAccountPassword,
 };
